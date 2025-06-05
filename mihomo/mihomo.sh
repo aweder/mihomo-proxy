@@ -195,9 +195,9 @@ download_mihomo() {
     if [[ "$arch" == "amd64-compatible" ]]; then
         # 对于不支持 v3 微架构的处理器，使用兼容版本
         echo -e "${YELLOW}检测到旧版 AMD64 处理器，下载兼容版本...${PLAIN}"
-        download_url="https://github.com/MetaCubeX/mihomo/releases/download/${latest_version}/mihomo-linux-amd64-compatible-${latest_version}.gz"
+        download_url="https://ghproxy.net/https://github.com/MetaCubeX/mihomo/releases/download/${latest_version}/mihomo-linux-amd64-compatible-${latest_version}.gz"
     else
-        download_url="https://github.com/MetaCubeX/mihomo/releases/download/${latest_version}/mihomo-linux-${arch}-${latest_version}.gz"
+        download_url="https://ghproxy.net/https://github.com/MetaCubeX/mihomo/releases/download/${latest_version}/mihomo-linux-${arch}-${latest_version}.gz"
     fi
     
     # 下载文件
@@ -208,7 +208,7 @@ download_mihomo() {
         # 如果兼容版本下载失败，尝试下载标准版本
         if [[ "$arch" == "amd64-compatible" ]]; then
             echo -e "${YELLOW}⚠ 兼容版本下载失败，尝试标准版本...${PLAIN}"
-            download_url="https://github.com/MetaCubeX/mihomo/releases/download/${latest_version}/mihomo-linux-amd64-${latest_version}.gz"
+            download_url="https://ghproxy.net/https://github.com/MetaCubeX/mihomo/releases/download/${latest_version}/mihomo-linux-amd64-${latest_version}.gz"
             if wget -O "$BINARY_FILE.gz" "$download_url"; then
                 echo -e "${GREEN}✓ 标准版本下载成功${PLAIN}"
                 echo -e "${YELLOW}⚠ 注意: 如果启动失败，可能是处理器不支持，请联系开发者${PLAIN}"
@@ -236,7 +236,7 @@ download_ui() {
     mkdir -p "$CONFIG_DIR/ui"
     
     # 下载MetaCubeX UI
-    local ui_url="https://github.com/MetaCubeX/metacubexd/releases/download/v1.187.1/compressed-dist.tgz"
+    local ui_url="https://ghproxy.net/https://github.com/MetaCubeX/metacubexd/releases/download/v1.187.1/compressed-dist.tgz"
     
     if wget -O /tmp/ui.tgz "$ui_url"; then
         tar -xzf /tmp/ui.tgz -C "$CONFIG_DIR/ui"
